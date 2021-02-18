@@ -1,0 +1,78 @@
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    width: 90vw;
+}
+
+.panel {
+
+    background-size: center;
+    background-position: center;
+    /* ne pas faire répété les image  */
+    background-repeat: no-repeat;
+    /* la hauteur des images */
+    height: 80vh;
+    /* crée des rebord arrondit */
+    border-radius: 50px;
+    /* changer la couleur de l'écriture */
+    color: #fff;
+    /* Mettre un curseur */
+    cursor: pointer;
+    /* pour mettre les image à la meme dimension */
+    flex: 0.5;
+    margin: 10px;
+    /* Ce mettre au dessus des élements non positionné */
+    position: relative;
+    /*Controler la vitesse de transition*/
+    transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+    font-size: 24px;
+    position: absolute;
+    /* "botton" et "left" permet de placer les éléments écrit en bas a droite */
+    bottom: 20px;
+    left: 2px;
+    /* Pour placer l'écriture coller au coin arrondi */
+    margin: 0;
+    /* Pour faire disparaitre les mots */
+    opacity: 0;
+}
+
+.panel.active {
+    /* Ouvre la premiere fenetre du panel  */
+    flex: 2;
+}
+
+.panel.active h3 {
+    /* Permet de faire apparaitre le mot sur l'image la plus ouverte */
+    opacity: 1;
+    /* Pour jouer avec la vitesse de changement de l'image */
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media(max-width: 480px) {
+    .container{
+        width: 100vw;
+    }
+
+    /* normalement sur un screen plus petit on ne voit pas les deux dernier panel à l'écran */
+    .panel:nth-of-type(5),
+    .panel:nth-of-type(6){
+        display: none;
+    }
+}
